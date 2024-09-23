@@ -1,0 +1,9 @@
+### 회원가입
+POST http://localhost:3000/auth/register
+content-type: application/json
+
+{
+    "email": "andy1@podo.com",
+    "password": "1234",
+    "username": "andy"
+}
