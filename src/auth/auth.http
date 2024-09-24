@@ -7,3 +7,13 @@ content-type: application/json
     "password": "1234",
     "username": "andy"
 }
+
+
+### 로그인
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "andy1@podo.com",
+    "password": "1234"
+}

@@ -22,7 +22,7 @@ content-type: application/json
 }
 
 ### Delete User
-DELETE http://localhost:3000/user/delete/andy@podo.
+DELETE http://localhost:3000/user/delete/andy@podo.com
 
 
 ### 잘못된 이메일과 이름을 입력한 경우
