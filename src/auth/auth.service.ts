@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateUserDto } from 'src/user/user.dto';
 import { UserService } from 'src/user/user.service';
-import { hashSync } from 'bcrypt';
+import { hashSync, compareSync } from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -33,8 +33,23 @@ export class AuthService {
 
     }
 
+    // 유저 확인
     async validateUser(email: string, password: string) {
-        
+        const user = await this.userService.getUser(email);
+        if (!user) {
+            return null;
+        }
+
+        // 받은 유저 정보에서 password와 나머지 정보를 분리 후 compareSync()로 
+        const { password: hashedPassword, ...userInfo} = user; 
+        console.log('해시드 비번',hashedPassword);
+        console.log('비밀번호 제외된 사용자 정보', userInfo);
+
+        if (compareSync(password, hashedPassword)) {
+            return userInfo; // 쿠키에 넣어줄 패스워드를 제외한 유저 정보
+        }
+
+        return null;
     }
 
 }
