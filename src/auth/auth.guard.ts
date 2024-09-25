@@ -31,8 +31,13 @@ export class AuthenticatedGuard implements CanActivate {
 */
     canActivate(context: ExecutionContext): boolean {
         const request = context.switchToHttp().getRequest();   
-    
-        return request.isAuthenticated(); // 세션에서 정보를 읽어서 인증 확인, 
+        console.log('1. request.session =', request.session);
+        
+        const temp = request.isAuthenticated(); // 세션에서 정보를 읽어서 인증 확인, 
+        console.log('temp =', temp);
+        console.log('2. request.session =', request.session);
+
+        return temp
     }
 }
 
