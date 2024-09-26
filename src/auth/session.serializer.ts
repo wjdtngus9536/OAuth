@@ -15,6 +15,7 @@ export class SessionSerializer extends PassportSerializer {
 
     // 세션에서 정보를 꺼내올 때 사용
     async deserializeUser(payload: any, done: Function): Promise<any> {
+        // 세션에서 email을 꺼내오는걸 어디서 호출할까?
         const user = await this.userService.getUser(payload); // payload는 세션에서 꺼내온 값 = email
         if(!user) {
             done(new Error('No User'), null)

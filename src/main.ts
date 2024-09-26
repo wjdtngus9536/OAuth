@@ -18,7 +18,7 @@ async function bootstrap() {
     secret: 'my-session-encrypt-key', // 세션 암호화에 사용되는 키
     resave: false, // HTTP 요청이 올 때마다 세션을 항상 저장할지 여부, 효율이 떨어지므로 false
     saveUninitialized: false, // 세션이 저장되기 전에 빈 값을 저장할지 여부, 인증이 되지 않은 사용자 정보도 빈 값으로 저장하므로 불필요한 공간을 차지하지 않도록 false
-    cookie: { maxAge: 1000 * 60 } // 쿠키 유효기간 1시간
+    cookie: { maxAge: 1000 * 10 } // 쿠키 유효기간 10초
   }));
   // 패스포트 초기화 및 세션 저장소 초기화
   app.use(passport.initialize());

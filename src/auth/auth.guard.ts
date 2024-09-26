@@ -16,6 +16,7 @@ export class LoginGuard extends AuthGuard('local') { // 패스포트를 편하�
         // 세션 저장, 세션을 저장하고 꺼내오는 방법은 session.serializer.ts 파일에 작성
         await super.logIn(request);
 
+        // 가드의 반환값은 boolean
         return result;
     }
 }

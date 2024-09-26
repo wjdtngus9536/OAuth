@@ -1,6 +1,7 @@
-import { Body, Controller, Post, Request, Response } from '@nestjs/common';
+import { Body, Controller, Get, Post, Request, Response, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/user/user.dto';
+import { AuthenticatedGuard, LoginGuard } from './auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -24,5 +25,17 @@ export class AuthController {
         }
         // response를 보내는 역할, 어떤 데이터를 보내는지 파악을 해서 이에 알맞게 Content-type을 지정해준다.
         return res.send({ message: 'login success' });
+    }
+
+    @UseGuards(LoginGuard)
+    @Post('session-login')
+    async sessionLogin(@Request() req) {
+        return req.user;
+    }
+
+    @UseGuards(AuthenticatedGuard)
+    @Get('test-guard')
+    testGuardWithSession(@Request() req) {
+        return req.user;
     }
 }
