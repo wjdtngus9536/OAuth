@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
       database: 'nest-auth-test.sqlite',
       entities: [User], // 엔티티(테이블과 매핑하는 @Entity() 데코레이터를 붙인 클래스)로 만드는 객체
       synchronize: true, // 데이터베이스에 스키마를 동기화
-      logging: true,
+      logging: false,
     }),
     UserModule,
     AuthModule

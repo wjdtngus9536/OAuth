@@ -43,8 +43,8 @@ export class AuthService {
 
         // 받은 유저 정보에서 password와 나머지 정보를 분리 후 compareSync()로 
         const { password: hashedPassword, ...userInfo} = user; 
-        console.log('해시드 비번',hashedPassword);
-        console.log('비밀번호 제외된 사용자 정보', userInfo);
+        // console.log('해시드 비번',hashedPassword);
+        // console.log('비밀번호 제외된 사용자 정보', userInfo);
 
         if (compareSync(password, hashedPassword)) {
             return userInfo; // 쿠키에 넣어줄 패스워드를 제외한 유저 정보
